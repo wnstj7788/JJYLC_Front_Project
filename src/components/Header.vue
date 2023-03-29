@@ -13,8 +13,10 @@
             </li>
             <li>
               <router-link to="/login" class ="text-white" v-if="!$store.state.account.id">로그인</router-link>
-              
               <a to="/login" class ="text-white" v-else @click="logout()">로그아웃</a>
+            </li>
+            <li>
+              <router-link to="/register" class ="text-white" v-if="!$store.state.account.id">회원가입</router-link>
             </li>
           </ul>
         </div>
