@@ -12,8 +12,16 @@
           <input type="password" class="form-control" id="floatingPassword" placeholder="Password" v-model="state.form.password">
           <label for="floatingPassword">Password</label>
         </div>
+        <div class="form-floating">
+          <input type="name" class="form-control" id="floatingName" placeholder="Name" v-model="state.form.name">
+          <label for="floatingName">Name</label>
+        </div>
+        <div class="form-floating">
+          <input type="phonenum" class="form-control" id="floatingPhone" placeholder="Phonenum" v-model="state.form.phonenum">
+          <label for="floatingPhone">Phonenum</label>
+        </div>
 
-        <button class="w-100 btn btn-lg btn-primary" @click="submit()">Sign Up</button>
+      <button class="w-100 btn btn-lg btn-primary" @click="submit()">Sign Up</button>
         <p class="mt-5 mb-3 text-muted">&copy; 2017–2023</p>
 
     </div>
@@ -31,14 +39,16 @@ export default{
     const state = reactive({
       form :{
         email: "",
-        password: ""
+        password: "",
+        name : "",
+        phonenum : ""
       }
     });
     
     const submit = ()=>{
       axios.post("/api/account/register", state.form).then((res)=>{
         store.commit("setAccount", res.data);
-        sessionStorage.setItem("id", res.data);
+        sessionStorage.setItem("email", res.data);
         router.push({path:"/"});
         alert("회원가입 성공");
       }).catch(()=>{
@@ -71,7 +81,21 @@ export default{
 }
 
 .form-signin input[type="password"] {
+  margin-bottom: -1px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.form-signin input[type="name"] {
+  margin-bottom: -1px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.form-signin input[type="phonenum"] {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-}</style>
+}
+
+
+
+</style>
