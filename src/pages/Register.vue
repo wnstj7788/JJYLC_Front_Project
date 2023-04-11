@@ -39,7 +39,9 @@ export default{
     const state = reactive({
       form :{
         email: "",
-        password: ""
+        password: "",
+        name : "",
+        phonenum : ""
       }
     });
     
