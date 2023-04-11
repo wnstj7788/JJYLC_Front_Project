@@ -13,7 +13,11 @@
             </li>
             <li>
               <router-link to="/login" class ="text-white" v-if="!$store.state.account.id">로그인</router-link>
-              <a to="/login" class ="text-white" v-else @click="logout()">로그아웃</a>
+              <a to="/login" class ="text-white" v-if="$store.state.account.id" @click="logout()">로그아웃</a>
+              
+            </li>
+            <li>
+              <router-link to="/registerCard" class ="text-white" >물건 등록하기</router-link>
             </li>
             <li>
               <router-link to="/register" class ="text-white" v-if="!$store.state.account.id">회원가입</router-link>
@@ -52,6 +56,7 @@ export default {
       sessionStorage.removeItem("id");
       router.push({path: "/"});
     }
+
 
     return {logout};
   }
