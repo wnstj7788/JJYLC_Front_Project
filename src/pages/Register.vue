@@ -48,7 +48,7 @@ export default{
     const submit = ()=>{
       axios.post("/api/account/register", state.form).then((res)=>{
         store.commit("setAccount", res.data);
-        sessionStorage.setItem("id", res.data);
+        sessionStorage.setItem("email", res.data);
         router.push({path:"/"});
         alert("회원가입 성공");
       }).catch(()=>{
