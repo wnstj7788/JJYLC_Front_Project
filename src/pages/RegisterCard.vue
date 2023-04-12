@@ -5,19 +5,19 @@
         <h1 class="h3 mb-3 fw-normal">Welcome to JJYLC.com!</h1>
 
         <div class="form-floating">
-          <input type="email" class="form-control" id="floatingInput" placeholder="name" v-model="state.form.name">
+          <input type="text" class="form-control" id="floatingInput" placeholder="name" v-model="state.form.name">
           <label for="floatingInput">name</label>
         </div>
         <div class="form-floating">
-          <input type="password" class="form-control" id="floatingPrice" placeholder="price" v-model="state.form.price">
+          <input type="number" class="form-control" id="floatingPrice" placeholder="price" v-model="state.form.price">
           <label for="floatingPrice">price</label>
         </div>
         <div class="form-floating">
-          <input type="number" class="form-control" id="floatingDiscountPer" placeholder="discount percent" v-model="state.form.price">
+          <input type="number" class="form-control" id="floatingDiscountPer" placeholder="discount percent" v-model="state.form.discountPer">
           <label for="floatingDiscountPer">discount percent</label>
         </div>
         <div class="form-floating">
-          <input type="file" class="form-control" id="floatingFile" placeholder="Password" >
+          <input type="file" class="form-control" id="floatingFile" placeholder="file upload">
           <label for="floatingFile">floatingFile</label>
         </div>
 
@@ -31,29 +31,40 @@
 <script>
 import axios from 'axios';
 import { reactive } from 'vue';
-import store from "@/scripts/store";
-import router from '@/scripts/router';
 
 export default{
   setup(){
+    
     const state = reactive({
       form :{
         name: "",
-        password: ""
+        price: "",
+        discountPer: ""
       }
     });
     
     const submit = ()=>{
-      axios.post("/api/account/register", state.form).then((res)=>{
-        store.commit("setAccount", res.data);
-        sessionStorage.setItem("id", res.data);
-        router.push({path:"/"});
-        alert("회원가입 성공");
+      const bookData = new FormData();
+      let file = document.getElementById("floatingFile").files[0]
+
+      bookData.append("name", state.form.name);
+      bookData.append("price", state.form.price);
+      bookData.append("discountPer", state.form.discountPer);
+      bookData.append("file", file);
+
+      axios.post("/api/upload", bookData, {
+        headers:{
+          'Content-Type' : 'multipart/form-data'
+        }
+      }).then(() => {
+        console.log("업로드 성공");
       }).catch(()=>{
         alert("에러가 발생했습니다.");
       })
 
     }
+
+
 
     return {state, submit};
 
