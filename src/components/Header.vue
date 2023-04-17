@@ -12,15 +12,15 @@
               
             </li>
             <li>
-              <router-link to="/login" class ="text-white" v-if="!$store.state.account.id">로그인</router-link>
-              <a to="/login" class ="text-white" v-if="$store.state.account.id" @click="logout()">로그아웃</a>
+              <router-link to="/login" class="text-white" v-if="!$store.state.account.email">로그인</router-link>
+              <a to="/login" class ="text-white" @click="logout()" v-else>로그아웃</a>
               
             </li>
             <li>
               <router-link to="/registerCard" class ="text-white" >물건 등록하기</router-link>
             </li>
             <li>
-              <router-link to="/register" class ="text-white" v-if="!$store.state.account.id">회원가입</router-link>
+              <router-link to="/register" class ="text-white" v-if="!$store.state.account.email">회원가입</router-link>
             </li>
           </ul>
         </div>
@@ -47,17 +47,20 @@
 <script>
 import store from '@/scripts/store';
 import router from '@/scripts/router';
+import axios from  "axios";
+
 
 export default {
   name: 'Header',
   setup(){
-    const logout = ()=>{
-      store.commit('setAccount', 0);
-      sessionStorage.removeItem("id");
-      router.push({path: "/"});
+    const logout = () => {
+      axios.post("/api/account/logout").then(() => {
+        store.commit('setAccount', null);
+        router.push({path: "/"});
+      });
+
+
     }
-
-
     return {logout};
   }
 }
