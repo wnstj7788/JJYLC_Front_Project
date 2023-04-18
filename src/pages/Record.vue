@@ -6,17 +6,9 @@
           <img :src="i.imgPath"/>
           <span class="name">{{ i.name }}</span>
           <span class="price">{{ lib.getNumverFormatted(i.price - i.price * i.discountPer / 100) }}원</span>
-          <i class="fa fa-trash" @click="remove(i.id)"></i>
         </li>
       </ul>
-      <div class="row">
-        <div class="col text-center">
-          <router-link to="/record" class="record btn btn-primary"> 배송조회 </router-link>
-        </div>
-      </div>
-
     </div>
-
   </div>
 </template>
 
@@ -32,20 +24,15 @@ export default {
     });
 
     const load = () => {
-      axios.get("/api/cart/items").then(({data}) => {
+      axios.get("/api/record/items").then(({data}) => {
         console.log(data);
         state.items = data;
       })
     }
 
-    const remove = (itemId) => {
-      axios.delete(`/api/cart/items/${itemId}`).then(() => {
-        load();
-      })
-    }
     load();
 
-    return {state, lib, remove};
+    return {state, lib};
 
 
   }

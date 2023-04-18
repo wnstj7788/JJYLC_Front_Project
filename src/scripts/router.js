@@ -3,6 +3,7 @@ import Login from "@/pages/Login";
 import Cart from "@/pages/Cart";
 import RegisterCard from "@/pages/RegisterCard";
 import Register from "@/pages/Register.vue";
+import Record from '@/pages/Record.vue';
 import {createRouter, createWebHistory} from "vue-router/dist/vue-router"
 
 const routes = [
@@ -10,7 +11,8 @@ const routes = [
     {path:'/login', component: Login},
     {path:'/cart', component: Cart},
     {path: '/register', component: Register},
-    {path: '/registerCard', component: RegisterCard}
+    {path: '/registerCard', component: RegisterCard},
+    {path: '/record', component: Record}
 
 ]
 
