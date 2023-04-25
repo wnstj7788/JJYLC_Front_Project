@@ -3,9 +3,9 @@
     <div class="container">
       <ul>
         <li v-for="(i, idx) in state.items" :key="idx">
-          <img :src="i.imgPath"/>
-          <span class="name">{{ i.name }}</span>
-          <span class="price">{{ lib.getNumverFormatted(i.price - i.price * i.discountPer / 100) }}원</span>
+          <img :src="i.orderImg"/>
+          <span class="name">{{ i.itemName }}</span>
+          <span class="price">{{ lib.getNumverFormatted(i.orderPrice - i.orderPrice * i.discountPer / 100) }}원</span>
         </li>
       </ul>
     </div>
@@ -24,7 +24,7 @@ export default {
     });
 
     const load = () => {
-      axios.get("/api/record/items").then(({data}) => {
+      axios.get("/api/orderList").then(({data}) => {
         console.log(data);
         state.items = data;
       })

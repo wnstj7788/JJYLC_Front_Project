@@ -11,6 +11,7 @@
       </ul>
       <div class="row">
         <div class="col text-center">
+          <button class="btn btn-primary" @click="order()"> 주문확정 </button> <br>
           <router-link to="/record" class="record btn btn-primary"> 배송조회 </router-link>
         </div>
       </div>
@@ -38,14 +39,21 @@ export default {
       })
     }
 
+    const order = () =>{
+      axios.get("api/order").then(({data}) =>{
+        console.log(data);
+      })
+    }
+
     const remove = (itemId) => {
       axios.delete(`/api/cart/items/${itemId}`).then(() => {
         load();
       })
     }
+
     load();
 
-    return {state, lib, remove};
+    return {state, lib, remove, order};
 
 
   }
