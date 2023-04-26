@@ -36,6 +36,7 @@
       <router-link to="/cart" class="cart btn">
         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
       </router-link>
+      <span class="text-light">{{userName}}님 안녕하세요!</span>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -48,11 +49,13 @@
 import store from '@/scripts/store';
 import router from '@/scripts/router';
 import axios from  "axios";
+import {computed} from "vue";
 
 
 export default {
   name: 'Header',
   setup(){
+    const userName = computed(()=>store.state.account.email);
     const logout = () => {
       axios.post("/api/account/logout").then(() => {
         store.commit('setAccount', null);
@@ -61,7 +64,7 @@ export default {
 
 
     }
-    return {logout};
+    return {logout,userName};
   }
 }
 </script>

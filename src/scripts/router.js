@@ -4,6 +4,7 @@ import Cart from "@/pages/Cart";
 import RegisterCard from "@/pages/RegisterCard";
 import Register from "@/pages/Register.vue";
 import Record from '@/pages/Record.vue';
+import Detail from '@/pages/Detail.vue'
 import {createRouter, createWebHistory} from "vue-router/dist/vue-router"
 
 const routes = [
@@ -12,7 +13,8 @@ const routes = [
     {path:'/cart', component: Cart},
     {path: '/register', component: Register},
     {path: '/registerCard', component: RegisterCard},
-    {path: '/record', component: Record}
+    {path: '/record', component: Record},
+    {path: '/detail',component: Detail}
 
 ]
 

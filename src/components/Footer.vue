@@ -1,11 +1,13 @@
 <template>
   <footer class="text-muted py-5">
   <div class="container">
-    <p class="float-end mb-1">
-      <a href="#">Back to top</a>
+    <nav>
+      <a href="https://github.com/wnstj7788/JJYLC_Back_Project" target="_blank">Project Github</a>
+    </nav>
+    <p>
+      <span>저자 : wnstj7788, ramaking, champiuned12, jjunehee, mont4857</span><br/>
+      <span>Copyright 2023. JJYLC. All Rights Reserved.</span>
     </p>
-    <p class="mb-1">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-    <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="/docs/5.3/getting-started/introduction/">getting started guide</a>.</p>
   </div>
 </footer>
 </template>

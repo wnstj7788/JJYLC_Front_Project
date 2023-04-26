@@ -4,7 +4,7 @@
         <!-- <img :src="item.imgPath" alt=""/> -->
         <div class="card-body">
             <p class="card-text">
-                <span >{{item.name}} &nbsp;</span>
+              <span ><a href="#" @click="moveToDetail(item.id)">{{item.name}}</a> &nbsp;</span>
                 <span class="discount badge bg-danger">
                     {{ item.discountPer }}%
                 </span>
@@ -31,6 +31,7 @@
 <script>
 import lib from "@/scripts/lib"
 import axios from "axios"
+import router from "@/scripts/router";
 
 export default {
     name: "Card",
@@ -45,7 +46,11 @@ export default {
                 console.log(data);
             })
         }
-        return {lib, addToCart}
+
+        const moveToDetail = (itemId)=>{
+          router.push({path:'/detail',query:{id:itemId}})
+        }
+        return {lib, addToCart,moveToDetail}
     }
 }
 </script>
