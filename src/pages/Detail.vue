@@ -1,7 +1,7 @@
 <template>
   <div>
     Detail Page
-    item id : {{this.$route.query.id}}
+    item id : {{route.params.itemId}}
   </div>
 
 </template>
@@ -9,24 +9,24 @@
 <script>
 
 import {useRoute} from "vue-router/dist/vue-router";
-import axios from "axios";
-import {reactive} from "vue";
+// import axios from "axios";
+// import {reactive} from "vue";
 
 export default {
   setup() {
     const route = useRoute();
 
-    const state = reactive({
-      items: []
-    });
-    const load = () => {
-      axios.get(`/api/detail/${route.query.id}`).then(({data}) => {
-        console.log(data);
-        state.items = data;
-      })
-    }
+    // const state = reactive({
+    //   items: []
+    // });
+    // const load = () => {
+    //   axios.get(`/api/detail/${route.query.id}`).then(({data}) => {
+    //     console.log(data);
+    //     state.items = data;
+    //   })
+    // }
 
-    load();
+    // load();
 
     return{route}
   }

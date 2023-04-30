@@ -48,7 +48,8 @@ export default {
         }
 
         const moveToDetail = (itemId)=>{
-          router.push({path:'/detail',query:{id:itemId}})
+          // router.push({path:`/detail/:${itemId}`})
+          router.push({name:'Detail',params:{itemId:itemId}})
         }
         return {lib, addToCart,moveToDetail}
     }
