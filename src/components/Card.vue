@@ -1,11 +1,14 @@
 <template>
     <div class="card shadow-sm">
-        <span class="img" :style="{backgroundImage: `url(${item.imgPath})`}" />
+<!--        <span class="img" :style="{backgroundImage: `url(${item.imgPath})`}" />-->
+      <span class="img" :style="{backgroundImage: `url(${encodeURI(item.imgPath)})`}" />
         <!-- <img :src="item.imgPath" alt=""/> -->
         <div class="card-body">
             <p class="card-text">
               <span ><a href="#" @click="moveToDetail(item.id)">{{item.name}}</a> &nbsp;</span>
-                <span class="discount badge bg-danger">
+
+
+              <span class="discount badge bg-danger">
                     {{ item.discountPer }}%
                 </span>
             </p>
