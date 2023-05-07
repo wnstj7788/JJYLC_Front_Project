@@ -3,7 +3,7 @@
     <div class="container">
       <ul>
         <li v-for="(i, idx) in state.items" :key="idx">
-          <img :src="i.imgPath"/>
+          <span class="img" :style="{backgroundImage: `url(${i.imgPath})`}" />
           <span class="name">{{ i.name }}</span>
           <span class="price">{{ lib.getNumverFormatted(i.price - i.price * i.discountPer / 100) }}원</span>
           <i class="fa fa-trash" @click="remove(i.id)"></i>
@@ -91,6 +91,14 @@ export default {
   font-size: 20px;
   margin-top: 65px;
   margin-right: 50px;
+}
+
+.cart .img{
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+  background-position: center;
 }
 
 
