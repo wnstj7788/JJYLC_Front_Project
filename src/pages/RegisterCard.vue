@@ -5,7 +5,7 @@
     <div class="form-signin w-100 m-auto">
 
         <!-- <img class="mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
-        <h1 class="h3 mb-3 fw-normal">Welcome to JJYLC.com!</h1>
+        <h1 class="h3 mb-3 fw-normal">사진 등록하기</h1>
 
         <div class="form-floating">
           <input type="text" class="form-control" id="floatingInput" placeholder="name" v-model="state.form.name">
@@ -20,7 +20,7 @@
           <label for="floatingDiscountPer">discount percent</label>
         </div>
         <div class="form-floating">
-          <input type="file" class="form-control" id="floatingFile" placeholder="file upload">
+          <input type="file" multiple class="form-control" id="floatingFile" placeholder="file upload">
           <label for="floatingFile">File</label>
         </div>
 
