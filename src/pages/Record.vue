@@ -3,8 +3,10 @@
     <div class="container">
       <ul>
         <li v-for="(i, idx) in state.items" :key="idx">
-          <img :src="i.orderImg"/>
+          <span class="img" :style="{backgroundImage: `url(${i.imgPath})`}" />
           <span class="name">{{ i.itemName }}</span>
+          <span class="orderDate">{{ i.orderDate }}</span>
+          <span class="orderStatus">{{ i.orderStatus }}</span>
           <span class="price">{{ lib.getNumverFormatted(i.orderPrice - i.orderPrice * i.discountPer / 100) }}원</span>
         </li>
       </ul>
@@ -52,11 +54,6 @@ export default {
   margin-bottom: 25px;
 }
 
-.cart ul li img {
-  width: 150px;
-  height: 150px;
-}
-
 .cart ul li .name {
   margin-left: 25px;
 }
@@ -72,5 +69,12 @@ export default {
   margin-right: 50px;
 }
 
+.cart .img{
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+  background-position: center;
+}
 
 </style>
