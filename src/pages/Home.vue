@@ -8,6 +8,9 @@
               filteredList();
             }" />
           <button @click="removeSelectedNumber">X</button>
+          <a href="#" @click="moveToSearchResult(searchTerm)">[검색]</a>
+          <!-- <router-link to="/search_result" class="record btn btn-primary"> 배송조회 </router-link>
+          <button @click="removeSelectedNumber" value="검색"></button> -->
         </div>
         <ul v-if="isFocus">
           <!-- <li v-if="filteredList.length === 0">검색결과가 없습니다.</li> -->
@@ -29,6 +32,7 @@ import Card from '@/components/Card';
 import axios from "axios";
 import { reactive } from "vue";
 import { ref } from "vue";
+import router from "@/scripts/router";
 
 export default {
   name: "Home",
@@ -82,24 +86,16 @@ export default {
       items: [],
     })
 
-    let filteredList=()=> {
-      console.log(searchTerm);
-      console.log(isFocus);
+    let filteredList= async ()=> {
       if(searchTerm.value === '') {
         temp.items = [];
         temp.items = recentSearchKeyword;
-        // for(let index = 0; index < recentSearchKeyword.length; index++) {
-        //   console.log(recentSearchKeyword[index]);
-        //   temp.items.push(recentSearchKeyword[index]);
-        // }
         
       } else{
-        let searchResult = getSearchResult();
-        console.log("------------------");
+        temp.items = [];
+        let searchResult = await getSearchResult();
         let dataList = [];
-        console.log(searchResult);
-        console.log(searchResult.PromiseState);
-        if(searchResult != null && searchResult.PromiseState != "rejected"){
+        if(searchResult != null){
           for (let index = 0; index < searchResult.length; index++) {
             let tempData = {
               name : searchResult[index]
@@ -111,10 +107,6 @@ export default {
         }
           
       }
-      console.log(temp);
-      console.log(temp.items);
-      console.log(temp.items[0]);
-      console.log(temp.items[0].name);
 
     }
 
@@ -127,7 +119,12 @@ export default {
         console.log(res)
         searchResult = res.data;
         console.log(searchResult)
+      }).catch((err) => {
+        console.log(err);
+        searchResult = null;
+        console.log(searchResult);
       })
+      console.log(searchResult);
       return searchResult;
     }
 
@@ -140,13 +137,19 @@ export default {
       searchTerm.value = '';
     }
 
+    const moveToSearchResult = (searchTerm)=>{
+          // router.push({path:`/detail/:${itemId}`})
+          router.push({name:'SearchResult',params:{searchTerm:searchTerm}})
+        }
+
 
     return {state, isFocus, searchTerm, selectedObj, recentSearchKeyword, temp
       , setSearchTerm
     ,setListOpen
     ,filteredList
     ,setSelectedNumber
-    ,removeSelectedNumber
+    ,removeSelectedNumber,
+    moveToSearchResult
   };
   },data() {
     return {

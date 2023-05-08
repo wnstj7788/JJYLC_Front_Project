@@ -5,6 +5,8 @@ import RegisterCard from "@/pages/RegisterCard";
 import Register from "@/pages/Register.vue";
 import Record from '@/pages/Record.vue';
 import Detail from '@/pages/Detail.vue'
+import SearchResult from '@/pages/SearchResult.vue'
+
 import {createRouter, createWebHistory} from "vue-router/dist/vue-router"
 
 const routes = [
@@ -14,7 +16,8 @@ const routes = [
     {path: '/register', component: Register},
     {path: '/registerCard', component: RegisterCard},
     {path: '/record', component: Record},
-    {path: '/detail/:itemId',name: "Detail",component: Detail}
+    {path: '/detail/:itemId',name: "Detail",component: Detail},
+    {path: '/searchResult/:searchTerm', name: "SearchResult",component: SearchResult}
 
 ]
 
