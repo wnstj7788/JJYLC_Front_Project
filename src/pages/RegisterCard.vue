@@ -28,13 +28,13 @@
         <div>
           <label for="floatingTag">Choose a tag:</label>
           <select id="floatingTag">
-            <option value="1">풍경화</option>
-            <option value="2">인물화</option>
-            <option value="3">정물화</option>
-            <option value="4">크로키</option>
-            <option value="5">추상화</option>
-            <option value="6">누드화</option>
-            <option value="7">초상화</option>
+            <option value="g1">풍경화</option>
+            <option value="g2">인물화</option>
+            <option value="g3">정물화</option>
+            <option value="g4">크로키</option>
+            <option value="g5">추상화</option>
+            <option value="g6">누드화</option>
+            <option value="g7">초상화</option>
           </select>
         </div>
 
